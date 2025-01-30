@@ -1,6 +1,6 @@
-# UI
-
 # 🌐 Headscale UI - Interface Flask pour gérer les machines Headscale
+
+EN Version : [English README](README_EN.md)
 
 Ce projet est une interface web simple basée sur **Flask** qui permet de gérer les machines sur **Headscale** via une API REST et une UI intuitive.
 
