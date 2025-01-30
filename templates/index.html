@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Headscale UI</title>
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"> -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f9;  /* Couleur de fond douce */
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+  
+    .container {
+      width: 100%;
+      max-width: 800px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  
+    h1, h2 {
+      color: #333;
+    }
+  
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+  
+    h2 {
+      font-size: 1.5rem;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+  
+    p {
+      color: #555;
+    }
+  
+    button {
+      background-color: #f09404;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 10px 0;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+  
+    button:hover {
+      background-color: #f1a326;
+    }
+  
+    input[type="text"] {
+      padding: 10px;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+  
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+  
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border: 1px solid #ddd;
+    }
+  
+    th {
+      background-color: #f8f8f8;
+      color: #333;
+    }
+  
+    td {
+      background-color: #fff;
+      color: #555;
+    }
+  
+    .table-container {
+      overflow-x: auto;
+      margin-top: 20px;
+    }
+  
+    .error-message {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+<body>
+<div class="container">
+  <h1>Headscale Management UI</h1>
+
+  <div class="section">
+    <h2>1. Générer une clé</h2>
+    <button onclick="generateKey()">Générer une clé</button>
+    <p id="key-output"></p>
+  </div>
+
+  <div class="section">
+    <h2>2. Enregistrer une clé</h2>
+    <input type="text" id="register-key-input" placeholder="Clé">
+    <button onclick="registerKey()">Enregistrer</button>
+    <p id="register-output"></p>
+  </div>
+
+  <div class="section">
+    <h2>3. Liste des machines</h2>
+    <button onclick="listNodes()">Actualiser la liste</button>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Adresses IP</th>
+            <th>Statut</th>
+          </tr>
+        </thead>
+        <tbody id="node-table-body">
+          <!-- Les lignes seront générées dynamiquement ici -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="section">
+      <h2>4. Supprimer une machine</h2>
+      <input type="text" id="delete-node-id" placeholder="ID de la machine">
+      <button onclick="deleteNode()">Supprimer</button>
+      <p id="delete-output"></p>
+  </div>
+  <div class="section">
+    <h2>5. Renommer une machine</h2>
+    <input type="text" id="rename-node-id" placeholder="ID de la machine">
+    <input type="text" id="rename-node-name" placeholder="Nouveau nom">
+    <button onclick="renameNode()">Renommer</button>
+    <p id="rename-output"></p>
+  </div>
+  
+</div>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
